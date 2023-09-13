@@ -36,6 +36,7 @@ const ColorMapping = () => {
           tooltip={{ enable: true }}
           legendSettings={{ mode: "Range", background: "white" }}
           background={currentMode === "Dark" ? "#33373E" : "#fff"}
+          enableAnimation={true}
         >
           <Inject services={[ColumnSeries, Tooltip, Legend, Category]} />
           <SeriesCollectionDirective>

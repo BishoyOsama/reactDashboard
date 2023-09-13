@@ -286,7 +286,7 @@ export const barCustomSeries = [
     xName: "x",
     yName: "y",
     name: "Gold",
-    type: "Column",
+    type: "Bar",
     marker: {
       dataLabel: {
         visible: true,
@@ -300,7 +300,7 @@ export const barCustomSeries = [
     xName: "x",
     yName: "y",
     name: "Silver",
-    type: "Column",
+    type: "Bar",
     marker: {
       dataLabel: {
         visible: true,
@@ -314,7 +314,7 @@ export const barCustomSeries = [
     xName: "x",
     yName: "y",
     name: "Bronze",
-    type: "Column",
+    type: "Bar",
     marker: {
       dataLabel: {
         visible: true,

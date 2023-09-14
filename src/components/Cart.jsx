@@ -4,7 +4,7 @@ import classNames from "classnames";
 const Cart = () => {
   const { handleClick, animationEffect, handleAnimationClick } = useStateContext();
   const cartClass = classNames(
-    "float-right h-screen dark:text-gray-200 bg-white dark:bg-main-dark-bg w-400",
+    "float-right h-screen dark:text-gray-200 bg-white dark:bg-main-dark-bg w-[280px] md:w-400",
     { "animate-translationAnimation": animationEffect }
   );
   return (

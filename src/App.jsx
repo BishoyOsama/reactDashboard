@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+import { Navbar, Footer, Sidebar, ThemeSettings, Cart } from "./components";
 import {
   Ecommerce,
   Orders,
@@ -33,6 +33,8 @@ const App = () => {
     setThemeSettings,
     currentColor,
     currentMode,
+    initialState,
+    animationEffect,
   } = useStateContext();
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
@@ -70,6 +72,7 @@ const App = () => {
 
             <div>
               {themeSettings && <ThemeSettings />}
+              {animationEffect && <Cart />}
               <Routes>
                 {/* Dashboard */}
                 <Route path="/" element={<Ecommerce />} />

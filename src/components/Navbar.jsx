@@ -9,11 +9,19 @@ import avatar from "../data/avatar.jpg";
 import { Cart, Chat, Notification, UserProfile } from ".";
 import { useStateContext } from "../contexts/ContextProvider";
 
-const NavButton = ({ title, customFunction, icon, color, dotColor }) => (
+const NavButton = ({
+  title,
+  customFunction,
+  animationEnd,
+  icon,
+  color,
+  dotColor,
+}) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
       onClick={customFunction}
+      onAnimationEnd={animationEnd}
       style={{ color }}
       className="relative text-xl rounded-full p-3 hover:bg-light-gray"
     >
@@ -35,7 +43,9 @@ const Navbar = () => {
     handleClick,
     screenSize,
     setScreenSize,
-    currentColor
+    currentColor,
+    animationEffect,
+    handleAnimationClick,
   } = useStateContext();
 
   useEffect(() => {
@@ -67,7 +77,8 @@ const Navbar = () => {
       <div className="flex">
         <NavButton
           title="Cart"
-          customFunction={() => handleClick("cart")}
+          customFunction={handleAnimationClick}
+          /* animationEnd={() => setAnimationEffect(false)} */
           color={currentColor}
           icon={<FiShoppingCart />}
         />

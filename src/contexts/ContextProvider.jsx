@@ -16,6 +16,7 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("#03C9D7");
   const [currentMode, setCurrentMode] = useState("Light");
   const [themeSettings, setThemeSettings] = useState(false);
+  const [animationEffect, setAnimationEffect] = useState(false);
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -30,6 +31,11 @@ export const ContextProvider = ({ children }) => {
   const handleClick = (clicked) => {
     setIsClicked({ ...initialState, [clicked]: true });
   };
+
+  const handleAnimationClick = () => {
+    setAnimationEffect(prev => !prev)
+    handleClick()
+  }
 
   return (
     <StateContext.Provider
@@ -47,6 +53,9 @@ export const ContextProvider = ({ children }) => {
         setMode,
         themeSettings,
         setThemeSettings,
+        initialState,
+        animationEffect,
+        handleAnimationClick,
       }}
     >
       {children}

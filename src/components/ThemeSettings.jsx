@@ -14,7 +14,7 @@ const ThemeSettings = () => {
     themeSettings,
   } = useStateContext();
   const cartClass = classNames(
-    "float-right h-screen dark:text-gray-200 bg-white dark:bg-main-dark-bg w-full md:w-400",
+    "float-right h-screen dark:text-gray-200 bg-white dark:bg-main-dark-bg w-full md:w-400 z-[1010]",
     { "animate-translationAnimation": themeSettings }
   );
   return (

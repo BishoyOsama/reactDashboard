@@ -17,6 +17,7 @@ export const ContextProvider = ({ children }) => {
   const [currentMode, setCurrentMode] = useState("Light");
   const [themeSettings, setThemeSettings] = useState(false);
   const [animationEffect, setAnimationEffect] = useState(false);
+  const [chatAnimationEffect, setChatAnimationEffect] = useState(false);
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -29,13 +30,21 @@ export const ContextProvider = ({ children }) => {
     setThemeSettings(false);
   };
   const handleClick = (clicked) => {
-    setIsClicked({ ...initialState, [clicked]: true });
+    setIsClicked((prevState) => ({
+      ...prevState,
+      [clicked]: !prevState[clicked],
+    }));
   };
 
   const handleAnimationClick = () => {
-    setAnimationEffect(prev => !prev)
-    handleClick()
-  }
+    setAnimationEffect((prev) => !prev);
+    handleClick();
+  };
+
+  const handleChatAnimationClick = () => {
+    setChatAnimationEffect((prev) => !prev);
+    handleClick();
+  };
 
   return (
     <StateContext.Provider
@@ -56,6 +65,8 @@ export const ContextProvider = ({ children }) => {
         initialState,
         animationEffect,
         handleAnimationClick,
+        handleChatAnimationClick,
+        chatAnimationEffect,
       }}
     >
       {children}

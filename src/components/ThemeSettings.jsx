@@ -1,15 +1,25 @@
 import { MdOutlineCancel } from "react-icons/md";
 import { BsCheck } from "react-icons/bs";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
-
+import classNames from "classnames";
 import { themeColors } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
 const ThemeSettings = () => {
-  const { setColor, setMode, currentMode, currentColor, setThemeSettings } =
-    useStateContext();
+  const {
+    setColor,
+    setMode,
+    currentMode,
+    currentColor,
+    setThemeSettings,
+    themeSettings,
+  } = useStateContext();
+  const cartClass = classNames(
+    "float-right h-screen dark:text-gray-200 bg-white dark:bg-main-dark-bg w-full md:w-400",
+    { "animate-translationAnimation": themeSettings }
+  );
   return (
     <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0">
-      <div className="float-right h-screen dark:text-gray-200 bg-white dark:bg-main-dark-bg w-400">
+      <div className={cartClass}>
         <div className="flex justify-between items-center p-4 ml-4">
           <p className="font-semibold text-lg">Settings</p>
           <button

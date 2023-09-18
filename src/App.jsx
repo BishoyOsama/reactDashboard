@@ -3,7 +3,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-import { Navbar, Footer, Sidebar, ThemeSettings, Cart } from "./components";
+import {
+  Navbar,
+  Footer,
+  Sidebar,
+  ThemeSettings,
+  Cart,
+  Chat,
+  Notification,
+} from "./components";
 import {
   Ecommerce,
   Orders,
@@ -35,9 +43,11 @@ const App = () => {
     currentMode,
     initialState,
     animationEffect,
+    chatAnimationEffect,
+    handleAnimationClick,
   } = useStateContext();
   return (
-    <div className={currentMode === "Dark" ? "dark" : ""}>
+    <div className={`${currentMode === "Dark" ? "dark" : ""}`}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
@@ -52,18 +62,16 @@ const App = () => {
               </button>
             </TooltipComponent>
           </div>
-          {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-              <Sidebar />
-            </div>
-          ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">
-              <Sidebar />
-            </div>
-          )}
+          <div
+            className={`w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ${
+              activeMenu ? "block" : "hidden"
+            }`}
+          >
+            <Sidebar />
+          </div>
           <div
             className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${
-              activeMenu ? "md:ml-72" : "flex-2"
+              activeMenu ? "lg:ml-72" : "flex-1"
             }`}
           >
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
@@ -73,6 +81,8 @@ const App = () => {
             <div>
               {themeSettings && <ThemeSettings />}
               {animationEffect && <Cart />}
+              {chatAnimationEffect && <Chat />}
+              {initialState.notification && <Notification />}
               <Routes>
                 {/* Dashboard */}
                 <Route path="/" element={<Ecommerce />} />

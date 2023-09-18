@@ -46,6 +46,7 @@ const Navbar = () => {
     currentColor,
     animationEffect,
     handleAnimationClick,
+    handleChatAnimationClick,
   } = useStateContext();
 
   useEffect(() => {
@@ -57,7 +58,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (screenSize <= 900) {
+    if (screenSize <= 1200) {
       setActiveMenu(false);
     } else {
       setActiveMenu(true);
@@ -85,7 +86,7 @@ const Navbar = () => {
         <NavButton
           title="Chat"
           dotColor="#03C9D7"
-          customFunction={() => handleClick("chat")}
+          customFunction={handleChatAnimationClick}
           color={currentColor}
           icon={<BsChatLeft />}
         />
@@ -119,8 +120,8 @@ const Navbar = () => {
           </div>
         </TooltipComponent>
 
-        {isClicked.cart && <Cart />}
-        {isClicked.chat && <Chat />}
+        {/* {isClicked.cart && <Cart />}
+        {isClicked.chat && <Chat />} */}
         {isClicked.notification && <Notification />}
         {isClicked.userProfile && <UserProfile />}
       </div>
